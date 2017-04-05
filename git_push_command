@@ -1,0 +1,18 @@
+first time login and add file 
+<https://github.com/parkingsystemcoder/App-code-contribute.git>
+
+1. create a file
+2. enter to the file location 
+3. git init // create file git will use (hidden file)
+4. git add <filename>> ! git add . 	// . add all your file in the location 
+5. git commit -m 'your message'		// message
+6. git remote add origin <url>  	// this will link to yout github repository 
+7. git push       			// add your file to the repository 
+	- this will ask for your username and password
+
+
+To add file
+1. create a file 
+2. git add .
+3. git commit -m ''
+4. git push
