@@ -39,6 +39,7 @@ def passes1(my_output):
 	print ('Button1 Pressed')
 	GPIO.output(13,True)
 	
+	# user input (PASS CODE Parking A)
 	parking_slot = raw_input('Key in the parking_slot code number')
 	access_code(parking_slot)
 	GPIO.output(13,False)
@@ -52,13 +53,15 @@ def passes2(my_output):
 	# key in the code 
 	GPIO.output(06,True)
 	
+	#user B input (PASS CODE Parking B)
 	parking_slot = raw_input('Key in the parking_slot code number')
 	access_code(parking_slot)
 	GPIO.output(06,False)
 
 #============================================
-
+#always loop (main loop)
 while True:
+	#initialization 
 	input_state1 = GPIO.input(2)
 	input_state2 = GPIO.input(3)
 	input_state3 = GPIO.input(4)
@@ -66,7 +69,9 @@ while True:
 	my_output2 = False;
 	my_output3 = False;
 
-	#parking A
+	# Parking A (check whether have car or not)
+	# my_output1 => indicator => variable pass to Yi Wei
+	# go to passess1 function
 
 	if input_state1 == False:
 		
@@ -91,16 +96,11 @@ while True:
 		elif parking_A == False:
 			print ('Parking A Available')
 			GPIO.output(26,False)
+	# Parking B
+	#my_output2 => indicator => variable pass to Yi Wei
+	# go to passess2 funciton
 
-
-
-
-	# Parking B 
 	if input_state2 == False:
-		print ('Button1 Pressed')
-		my_output2 = 'True' 
-		GPIO.output(19,True)
-		passes2(my_output2)
 		
 		if parking_B == False:
 			parking_B = True
