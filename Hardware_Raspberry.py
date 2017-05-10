@@ -6,25 +6,18 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(2,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(3,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(4,GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(26,GPIO.OUT)
-GPIO.setup(19,GPIO.OUT)
-GPIO.setup(13,GPIO.OUT)
-GPIO.setup(06,GPIO.OUT)
+GPIO.setup(17,GPIO.OUT)
+GPIO.setup(22,GPIO.OUT)
+GPIO.setup(27,GPIO.OUT)
+GPIO.setup(10,GPIO.OUT)
 
 #close all led 
-GPIO.output(26,False)
-GPIO.output(19,False)
-GPIO.output(13,False)
-GPIO.output(06,False)
+GPIO.output(17,False)
+GPIO.output(22,False)
+GPIO.output(27,False)
+GPIO.output(10,False)
 parking_A = False
 parking_B = False
-
-def access_correct(code):
-	print('Code is correct')
-
-	GPIO.output(13,False)
-	my_output3 = 'False'
-
 
 
 # send code to the database
@@ -38,11 +31,11 @@ def passes1(my_output):
 	
 	# key in the code 
 	print ('Button1 Pressed')
-	GPIO.output(13,True)
+	GPIO.output(27,True)
 	
 	parking_slot = raw_input('Key in the parking_slot code number')
 	access_code(parking_slot)
-	GPIO.output(13,False)
+	GPIO.output(27,False)
 	
 
 
@@ -51,11 +44,11 @@ def passes2(my_output):
 	time.sleep(5)
 	
 	# key in the code 
-	GPIO.output(06,True)
+	GPIO.output(10,True)
 	
 	parking_slot = raw_input('Key in the parking_slot code number')
 	access_code(parking_slot)
-	GPIO.output(06,False)
+	GPIO.output(10,False)
 
 #============================================
 
@@ -75,7 +68,7 @@ while True:
 			parking_A = True
 			print ('New Car A Come In')
 			my_output1 = 'True' 
-			GPIO.output(26,True)
+			GPIO.output(17,True)
 			passes1(my_output1)
 		elif parking_A == True:
 			print ('Car A is still parking')
@@ -85,13 +78,13 @@ while True:
 		time.sleep(0.5)
 		if parking_A == True:
 			parking_A = False
-			GPIO.output(26,False)
+			GPIO.output(17,False)
 			my_output1 = 'False' 
 			print ('Car A is moving out')
-			GPIO.output(26,False)
+			GPIO.output(17,False)
 		elif parking_A == False:
 			print ('Parking A Available')
-			GPIO.output(26,False)
+			GPIO.output(17,False)
 
 
 
@@ -103,7 +96,7 @@ while True:
 			parking_B = True
 			print ('New Car B Come In')
 			my_output2 = 'True' 
-			GPIO.output(19,True)
+			GPIO.output(22,True)
 			passes2(my_output2)
 		elif parking_B == True:
 			print ('Car B is still parking')
@@ -115,13 +108,13 @@ while True:
 		time.sleep(0.5)
 		if parking_B == True:
 			parking_B = False
-			GPIO.output(19,False)
+			GPIO.output(22,False)
 			my_output1 = 'False' 
 			print ('Car B is moving out')
-			GPIO.output(19,False)
+			GPIO.output(22,False)
 		elif parking_B == False:
 			print ('Parking B Available')
-			GPIO.output(19,False)
+			GPIO.output(22,False)
 
 	
 
